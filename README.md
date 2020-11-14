@@ -8,7 +8,7 @@ WIP
 
 ## Usage
 
-```sh#
+```sh
 # bash
 source <(lazycomplete \
   gh 'gh completion' \
