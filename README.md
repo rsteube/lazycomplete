@@ -16,19 +16,20 @@ source <(lazycomplete \
   carapace 'carapace _carapace' \
 )
 
-# fish
-lazycomplete \
-  gh 'gh completion' \
-  lab 'lab completion' \
-  carapace 'carapace _carapace' \
-| eval
-
 # elvish
 eval (lazycomplete ^
   gh 'gh completion' ^
   lab 'lab completion' ^
   carapace 'carapace _carapace' ^
 |slurp)
+
+
+# fish
+lazycomplete \
+  gh 'gh completion' \
+  lab 'lab completion' \
+  carapace 'carapace _carapace' \
+| eval
 
 # powershell
 lazycomplete `
