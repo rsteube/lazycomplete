@@ -8,6 +8,7 @@ fn main() {
         "bash" => println!("{}", bash(completers())),
         "elvish" => println!("{}", elvish(completers())),
         "fish" => println!("{}", fish(completers())),
+        "oil.ovm" => println!("{}", bash(completers())),
         "pwsh" => println!("powershell shell"),
         p if p.starts_with("python") => println!("{}", xonsh(completers())),
         "zsh" => println!("{}", zsh(completers())),
