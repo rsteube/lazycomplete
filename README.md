@@ -31,6 +31,12 @@ lazycomplete \
   lab 'lab completion' \
 | eval
 
+# oil
+source <(lazycomplete \
+  gh 'gh completion' \
+  lab 'lab completion' \
+)
+
 # powershell
 lazycomplete `
   gh 'gh completion' `
