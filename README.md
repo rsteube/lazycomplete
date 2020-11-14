@@ -16,14 +16,12 @@ Invoke with pairs of binary name and command to be invoked to create the complet
 source <(lazycomplete \
   gh 'gh completion' \
   lab 'lab completion' \
-  carapace 'carapace _carapace' \
 )
 
 # elvish
 eval (lazycomplete ^
   gh 'gh completion' ^
   lab 'lab completion' ^
-  carapace 'carapace _carapace' ^
 |slurp)
 
 
@@ -31,27 +29,23 @@ eval (lazycomplete ^
 lazycomplete \
   gh 'gh completion' \
   lab 'lab completion' \
-  carapace 'carapace _carapace' \
 | eval
 
 # powershell
 lazycomplete `
   gh 'gh completion' `
   lab 'lab completion' `
-  carapace 'carapace _carapace' `
 | Out-String | Invoke-Expression
 
 # xonsh
 exec($(lazycomplete \
   gh 'gh completion' \
   lab 'lab completion' \
-  carapace 'carapace _carapace' \
 ))
 
 # zsh
 source <(lazycomplete \
   gh 'gh completion' \
   lab 'lab completion' \
-  carapace 'carapace _carapace' \
 )
 ```
