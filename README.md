@@ -29,4 +29,25 @@ eval (lazycomplete ^
   lab 'lab completion' ^
   carapace 'carapace _carapace' ^
 |slurp)
+
+# powershell
+lazycomplete `
+  gh 'gh completion' `
+  lab 'lab completion' `
+  carapace 'carapace _carapace' `
+| Out-String | Invoke-Expression
+
+# xonsh
+exec($(lazycomplete \
+  gh 'gh completion' \
+  lab 'lab completion' \
+  carapace 'carapace _carapace' \
+))
+
+# zsh
+source <(lazycomplete \
+  gh 'gh completion' \
+  lab 'lab completion' \
+  carapace 'carapace _carapace' \
+)
 ```
