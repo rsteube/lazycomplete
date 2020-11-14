@@ -9,6 +9,8 @@ WIP
 
 ## Usage
 
+Invoke with pairs of binary name and command to be invoked to create the completion:
+
 ```sh
 # bash
 source <(lazycomplete \
