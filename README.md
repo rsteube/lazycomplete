@@ -29,7 +29,7 @@ eval (lazycomplete ^
 lazycomplete \
   gh 'gh completion' \
   lab 'lab completion' \
-| eval
+| source
 
 # oil
 source <(lazycomplete \
