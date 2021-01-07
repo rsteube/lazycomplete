@@ -9,7 +9,9 @@ fn main() {
         "elvish" => println!("{}", elvish(completers())),
         "fish" => println!("{}", fish(completers())),
         "oil.ovm" => println!("{}", bash(completers())),
-        "pwsh" => println!("powershell shell"),
+        "pwsh" => println!("{}", powershell(completers())),
+        "powershell" => println!("{}", powershell(completers())),
+        "powershell.exe" => println!("{}", powershell(completers())),
         p if p.starts_with("python") => println!("{}", xonsh(completers())),
         "zsh" => println!("{}", zsh(completers())),
         p => println!("unknown shell: {}", p),
@@ -87,6 +89,27 @@ complete -c '{}' -f -a '(_lazycomplete_{} {})'
     return elems.join("\n");
 }
 
+fn powershell(c: HashMap<String, String>) -> String {
+    let mut elems: Vec<String> = Vec::new();
+    for (k, v) in &c {
+        elems.append(&mut vec![format!(
+            "Function _lazycomplete_{} {{
+    param($commandAst, $cursorPosition)
+    Register-ArgumentCompleter -Native -CommandName '{}' -ScriptBlock {{}}
+    {} | out-string | invoke-expression
+    [System.Management.Automation.CommandCompletion]::CompleteInput($commandAst.ToString(), $cursorPosition, $null).CompletionMatches
+
+}}
+Register-ArgumentCompleter -Native -CommandName '{}' -ScriptBlock (Get-Item \"Function:_lazycomplete_{}\").ScriptBlock
+",
+            k, k, v, k, k
+        )]);
+    }
+
+            return String::from("using namespace System.Management.Automation
+using namespace System.Management.Automation.Language
+") + &elems.join("\n");
+}
 fn xonsh(c: HashMap<String, String>) -> String {
     let mut elems: Vec<String> = Vec::new();
     for (k, v) in &c {
