@@ -121,12 +121,13 @@ fn xonsh(c: HashMap<String, String>) -> String {
     import builtins
     if not line.startswith('{} '):
         return # not the expected command to complete
-    del _lazycomplete_{} 
+    #del _lazycomplete_{} 
     builtins.__xonsh__.completers = builtins.__xonsh__.completers.copy()
     del builtins.__xonsh__.completers['{}']
-    exec(compile(subprocess.run(['{}'], stdout=subprocess.PIPE).stdout.decode('utf-8'), \"\", \"exec\"))
+    exec(compile(subprocess.run('{}'.split(), stdout=subprocess.PIPE).stdout.decode('utf-8'), \"\", \"exec\"))
     return builtins.__xonsh__.completers['{}'](prefix, line, begidx, endidx, ctx)
-completer add {} _lazycomplete_{}
+from xonsh.completers._aliases import _add_one_completer
+_add_one_completer('{}', _lazycomplete_{}, 'start')
 ",
             k, k,k, k, k, v, k, k, k
         )]);
