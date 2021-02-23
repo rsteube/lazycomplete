@@ -94,11 +94,10 @@ fn powershell(c: HashMap<String, String>) -> String {
     for (k, v) in &c {
         elems.append(&mut vec![format!(
             "Function _lazycomplete_{} {{
-    param($commandAst, $cursorPosition)
+    param($wordToComplete, $commandAst, $cursorPosition)
     Register-ArgumentCompleter -Native -CommandName '{}' -ScriptBlock {{}}
     {} | out-string | invoke-expression
-    [System.Management.Automation.CommandCompletion]::CompleteInput($commandAst.ToString(), $cursorPosition, $null).CompletionMatches
-
+    [System.Management.Automation.CommandCompletion]::CompleteInput($commandAst.ToString().PadRight($cursorPosition, ' ').Substring(0, $cursorPosition), $cursorPosition, $null).CompletionMatches
 }}
 Register-ArgumentCompleter -Native -CommandName '{}' -ScriptBlock (Get-Item \"Function:_lazycomplete_{}\").ScriptBlock
 ",
