@@ -14,44 +14,44 @@ Invoke with pairs of binary name and command to be invoked to create the complet
 ```sh
 # bash
 source <(lazycomplete \
-  gh 'gh completion' \
-  lab 'lab completion' \
+  gh 'gh _carapace' \
+  lab 'lab _carapace' \
 )
 
 # elvish
 eval (lazycomplete ^
-  gh 'gh completion' ^
-  lab 'lab completion' ^
+  gh 'gh _carapace' ^
+  lab 'lab _carapace' ^
 |slurp)
 
 
 # fish
 lazycomplete \
-  gh 'gh completion' \
-  lab 'lab completion' \
+  gh 'gh _carapace' \
+  lab 'lab _carapace' \
 | source
 
 # oil
 source <(lazycomplete \
-  gh 'gh completion' \
-  lab 'lab completion' \
+  gh 'gh _carapace' \
+  lab 'lab _carapace' \
 )
 
 # powershell
 lazycomplete `
-  gh 'gh completion' `
-  lab 'lab completion' `
+  gh 'gh _carapace' `
+  lab 'lab _carapace' `
 | Out-String | Invoke-Expression
 
 # xonsh
 exec($(lazycomplete \
-  gh 'gh completion' \
-  lab 'lab completion' \
+  gh 'gh _carapace' \
+  lab 'lab _carapace' \
 ))
 
 # zsh
 source <(lazycomplete \
-  gh 'gh completion' \
-  lab 'lab completion' \
+  gh 'gh _carapace' \
+  lab 'lab _carapace' \
 )
 ```
