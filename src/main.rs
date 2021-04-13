@@ -8,7 +8,7 @@ fn main() {
         "bash" => println!("{}", bash(completers())),
         "elvish" => println!("{}", elvish(completers())),
         "fish" => println!("{}", fish(completers())),
-        "oil.ovm" => println!("{}", bash(completers())),
+        "oil.ovm" => println!("{}", oil(completers())),
         "pwsh" => println!("{}", powershell(completers())),
         "powershell" => println!("{}", powershell(completers())),
         "powershell.exe" => println!("{}", powershell(completers())),
@@ -42,6 +42,24 @@ fn bash(c: HashMap<String, String>) -> String {
   unset -f _lazycomplete_{}
   source <({})
   $\"$(complete -p {} | awk '{{print $3}}')\"
+}}
+complete -F _lazycomplete_{} {}
+",
+            k, k, v, k, k, k
+        )]);
+    }
+
+    return elems.join("\n");
+}
+
+fn oil(c: HashMap<String, String>) -> String {
+    let mut elems: Vec<String> = Vec::new();
+    for (k, v) in &c {
+        elems.append(&mut vec![format!(
+            "_lazycomplete_{}() {{
+  unset -f _lazycomplete_{}
+  source <({})
+  $\"$(complete | grep --only-matching \"^{} .*ShellFuncAction [^>]\\+\" | awk '{{print $5}}')\"
 }}
 complete -F _lazycomplete_{} {}
 ",
@@ -105,9 +123,11 @@ Register-ArgumentCompleter -Native -CommandName '{}' -ScriptBlock (Get-Item \"Fu
         )]);
     }
 
-            return String::from("using namespace System.Management.Automation
+    return String::from(
+        "using namespace System.Management.Automation
 using namespace System.Management.Automation.Language
-") + &elems.join("\n");
+",
+    ) + &elems.join("\n");
 }
 fn xonsh(c: HashMap<String, String>) -> String {
     let mut elems: Vec<String> = Vec::new();
