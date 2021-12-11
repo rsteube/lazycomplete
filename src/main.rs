@@ -74,8 +74,8 @@ fn elvish(c: HashMap<String, String>) -> String {
     let mut elems: Vec<String> = Vec::new();
     for (k, v) in &c {
         elems.append(&mut vec![format!(
-            "edit:completion:arg-completer[{}] = [@arg]{{
-      edit:completion:arg-completer[{}] = [@arg]{{}}
+            "set edit:completion:arg-completer[{}] = {{|@arg|
+      set edit:completion:arg-completer[{}] = {{|@arg|}}
       eval ({} | slurp)
       $edit:completion:arg-completer[{}] $@arg
 }}
