@@ -49,3 +49,12 @@ scoop:
     name: scoop-bucket
     token: "{{ .Env.GORELEASER_GITHUB_TOKEN }}"
   commit_msg_template: "Scoop update for {{ .ProjectName }} version {{ .Tag }}"
+aurs:
+  -
+    description: "lazy loading for shell completion scripts"
+    homepage: "https://github.com/rsteube/lazycomplete"
+    license: "MIT"
+    maintainers:
+      - rsteube <rsteube@users.noreply.github.com>
+    private_key: '{{ .Env.AUR_KEY }}'
+    git_url: 'ssh://aur@aur.archlinux.org/lazycomplete-bin.git'
