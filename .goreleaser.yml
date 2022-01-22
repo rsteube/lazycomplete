@@ -38,5 +38,14 @@ brews:
     tap:
       owner: rsteube
       name: homebrew-tap
-      token: "{{ .Env.HOMEBREW_TAP_GITHUB_TOKEN }}"
+      token: "{{ .Env.GORELEASER_GITHUB_TOKEN }}"
     commit_msg_template: "Brew formula update for {{ .ProjectName }} version {{ .Tag }}"
+scoop:
+  description: "lazy loading for shell completion scripts"
+  homepage: "https://github.com/rsteube/lazycomplete"
+  license: "MIT"
+  bucket:
+    owner: rsteube
+    name: scoop-bucket
+    token: "{{ .Env.GORELEASER_GITHUB_TOKEN }}"
+  commit_msg_template: "Scoop update for {{ .ProjectName }} version {{ .Tag }}"
