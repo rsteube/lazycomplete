@@ -58,3 +58,14 @@ aurs:
       - rsteube <rsteube@users.noreply.github.com>
     private_key: '{{ .Env.AUR_KEY }}'
     git_url: 'ssh://aur@aur.archlinux.org/lazycomplete-bin.git'
+
+nfpms:
+  -
+    description: "lazy loading for shell completion scripts"
+    homepage: "https://github.com/rsteube/lazycomplete"
+    license: "MIT"
+    maintainer: rsteube <rsteube@users.noreply.github.com>
+    formats:
+      - apk
+      - deb
+      - rpm
