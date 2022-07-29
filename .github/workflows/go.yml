@@ -30,10 +30,6 @@ jobs:
     - name: Test
       run: go test -v ./...
 
-    - name: Install fury
-      run: curl -L "https://github.com/gemfury/cli/releases/download/v0.20.0-beta.3/fury_0.20.0-beta.3_Linux_64bit.tar.gz" | tar --directory /usr/local/bin/ -xzv fury && touch ~/.netrc
-      if: startsWith(github.ref, 'refs/tags/')
-
     -
       name: Run GoReleaser
       uses: goreleaser/goreleaser-action@v2

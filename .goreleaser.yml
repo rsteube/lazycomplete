@@ -72,4 +72,4 @@ nfpms:
 
 publishers:
   - name: fury
-    cmd: fury push --api-token $FURY_TOKEN dist/*.rpm dist/*.deb
+    cmd: ls dist/*.deb dist/*.rpm | xargs -I'{}' curl -F package=@"{}" https://$FURY_TOKEN@push.fury.io/rsteube/
