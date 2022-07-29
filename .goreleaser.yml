@@ -69,3 +69,7 @@ nfpms:
       - apk
       - deb
       - rpm
+
+publishers:
+  - name: fury
+    cmd: fury push --api-token $FURY_TOKEN dist/*.rpm dist/*.deb
