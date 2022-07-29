@@ -72,4 +72,6 @@ nfpms:
 
 publishers:
   - name: fury
-    cmd: ls dist/*.deb dist/*.rpm | xargs -I'{}' curl -F package=@"{}" https://$FURY_TOKEN@push.fury.io/rsteube/
+    cmd: "bash -c \"[[ {{.ArtifactPath}} =~ ^.*.(deb|rpm)$ ]] && curl -F package=@{{abs .ArtifactPath}} https://$FURY_TOKEN@push.fury.io/rsteube/ || true\""
+    env:
+      - FURY_TOKEN={{ .Env.FURY_TOKEN }}
